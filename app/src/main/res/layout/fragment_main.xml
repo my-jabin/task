@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.jiujiu.task.ui.main.MainFragViewModel" />
+
+        <variable
+            name="dateFormat"
+            type="java.time.format.DateTimeFormatter" />
+
+        <variable
+            name="timeFormat"
+            type="java.time.format.DateTimeFormatter" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/padding_normal">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_from"
+            style="@style/TextAppearance.task.textInput.dropdown"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_small"
+            android:hint="@string/hint_from"
+            app:hintTextAppearance="@style/TextAppearance.task.hint"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <AutoCompleteTextView
+                android:id="@+id/et_from"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="@={viewModel.trip.from}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_from_date"
+            style="@style/TextAppearance.task.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_from_date"
+            app:hintTextAppearance="@style/TextAppearance.task.hint"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_from">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_from_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:editable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:text="@{viewModel.trip.departureDate.format(dateFormat)}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_from_time"
+            style="@style/TextAppearance.task.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_time"
+            app:hintTextAppearance="@style/TextAppearance.task.hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/til_from">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_from_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:editable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:text="@{viewModel.trip.departureTime.format(timeFormat)}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_to"
+            style="@style/TextAppearance.task.textInput.dropdown"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_normal"
+            android:hint="@string/hint_to"
+            app:hintTextAppearance="@style/TextAppearance.task.hint"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_from_date">
+
+            <AutoCompleteTextView
+                android:id="@+id/et_to"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:text="@={viewModel.trip.to}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_to_date"
+            style="@style/TextAppearance.task.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_to_date"
+            app:hintTextAppearance="@style/TextAppearance.task.hint"
+            app:layout_constraintEnd_toEndOf="@id/guideline"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_to">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_to_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:editable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:text="@{viewModel.trip.arrivalDate.format(dateFormat)}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_to_time"
+            style="@style/TextAppearance.task.textInput.outline"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_time"
+            app:hintTextAppearance="@style/TextAppearance.task.hint"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/guideline"
+            app:layout_constraintTop_toBottomOf="@id/til_to">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_to_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:editable="false"
+                android:focusable="false"
+                android:inputType="none"
+                android:text="@{viewModel.trip.arrivalTime.format(timeFormat)}" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.7" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_save"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_large"
+            android:onClick="@{ () -> viewModel.saveTrip()}"
+            android:text="@string/text_save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/til_to_time" />
+
+        <TextView
+            android:id="@+id/tv_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="size" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
